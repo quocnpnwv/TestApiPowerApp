@@ -1,4 +1,4 @@
-page 50101 CheckItemInventory
+page 50102 CheckItemInventory
 {
     APIGroup = 'itemInventory';
     APIPublisher = 'itemInventoryCheck';
@@ -48,6 +48,7 @@ page 50101 CheckItemInventory
                 field(picture; Rec.BLOB_Picture)
                 {
                     Caption = 'Image';
+                    Editable = false;
                 }
                 field(quantity; Rec.Quantity)
                 {
