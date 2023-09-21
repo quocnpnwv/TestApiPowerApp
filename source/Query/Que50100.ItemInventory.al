@@ -6,42 +6,46 @@ query 50100 ItemInventory
     EntityName = 'itemInventory';
     EntitySetName = 'itemInventory';
     QueryType = API;
-    //SourceTableView = where("Location Code" = filter(<> ''), Quantity = filter( > 0));
-    //QueryCategory 
-
+    
     elements
     {
-        dataitem(itemLocation; Location)
+        dataitem(Item_Ledger_Entry; "Item Ledger Entry")
         {
-            column(LocationCode; Code)
+            DataItemTableFilter = "Location Code" = filter(<> '');
+            
+            column(Item_No; "Item No.")
             {
+
             }
-            dataitem(itemsQuery; item)
+            column(Location_Code; "Location Code")
             {
-                DataItemLink = "Location Filter" = itemLocation.code;
-                SqlJoinType = InnerJoin;
-                column(No; "No.")
-                {
-                }
+                
+            }
+            column(Sum_Quantity; Quantity)
+            {
+                Method = Sum;
+            }
+            dataitem(itemsQuery; Item)
+            {
+                DataItemLink = "No." = Item_Ledger_Entry."Item No.";
+                SqlJoinType = LeftOuterJoin;
                 column(Picture; Picture)
                 {
+
+                }
+                column(Category; "Item Category Code")
+                {
+
                 }
                 column(Description; Description)
                 {
+
                 }
-                column(categoryCode; "Item Category Code")
+                column(unitPrice; "Unit Price")
                 {
+
                 }
-                column(Inventory; Inventory)
-                {
-                }
-                column(Price; "Unit Price")
-                {
-                }
-             
             }
         }
     }
-
-
 }

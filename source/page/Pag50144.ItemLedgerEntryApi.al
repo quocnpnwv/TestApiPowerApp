@@ -93,6 +93,58 @@ page 50144 "Item Ledger Entry Api"
         PictureWidth: Integer;
         gDescription: Text;
 
+    // trigger OnAfterGetRecord()
+    // var
+    //     TenantMedia: Record "Tenant Media";
+    //     OutStr: OutStream;
+    //     InStr: InStream;
+    //     MediaId: Guid;
+    //     RecordR: RecordRef;
+    //     FieldR: FieldRef;
+    //     ItemCategory: Record "Item Category";
+    //     // lRec_Item: Record Item;
+    //     lQue_Item: Query ItemInventory;
+    // begin
+    //     lQue_Item.Open();
+    //     lQue_Item.SetRange(No, Rec."Item No.");
+    //     while lQue_Item.Read() do begin
+    //         TempPictureBlobStorage.DeleteAll();
+    //         TempPictureBlobStorage.Init();
+    //         TempPictureBlobStorage."Value BLOB".CreateOutStream(OutStr);
+
+    //         // If the picture is of type Media, use this code:
+    //         // Rec.Picture.Image.ExportStream(OutStr);
+
+    //         // If the picture is of type MediaSet, use this code:
+    //         // if lRec_Item.FindSet() then begin
+    //         if lQue_Item.Picture.Count > 0 then begin
+    //             // If there are more than 1 pictures for this item. We take the first one.
+    //             MediaId := lQue_Item.Picture.Item(1);
+
+    //             TenantMedia.SetAutoCalcFields(Content);
+    //             if not TenantMedia.Get(MediaID) then
+    //                 exit;
+
+    //             TenantMedia.Content.CreateInStream(InStr);
+    //             CopyStream(OutStr, InStr);
+
+    //             PictureWidth := TenantMedia.Width;
+    //             PictureHeight := TenantMedia.Height;
+    //         end;
+    //         gDescription := lQue_Item.Description;
+    //         TempPictureBlobStorage.Insert();
+
+    //         ItemCategoryName := '';
+    //         if lQue_Item.categoryCode <> '' then begin
+    //             if ItemCategory.Get(lQue_Item.categoryCode)
+    //             then
+    //                 ItemCategoryName := ItemCategory.Description
+    //         end;
+    //         // end;
+    //     end;
+    // end;
+
+
     trigger OnAfterGetRecord()
     var
         TenantMedia: Record "Tenant Media";
@@ -102,46 +154,43 @@ page 50144 "Item Ledger Entry Api"
         RecordR: RecordRef;
         FieldR: FieldRef;
         ItemCategory: Record "Item Category";
-        // lRec_Item: Record Item;
-        lQue_Item: Query ItemInventory;
+        lRec_Item: Record Item;
+    // lQue_Item: Query ItemInventory;
     begin
-        lQue_Item.Open();
-        lQue_Item.SetRange(No, Rec."Item No.");
-        while lQue_Item.Read() do begin
-            TempPictureBlobStorage.DeleteAll();
-            TempPictureBlobStorage.Init();
-            TempPictureBlobStorage."Value BLOB".CreateOutStream(OutStr);
+        // lQue_Item.Open();
+        lRec_Item.SetRange("No.", Rec."Item No.");
+        // while lQue_Item.Read() do begin
+        TempPictureBlobStorage.DeleteAll();
+        TempPictureBlobStorage.Init();
+        TempPictureBlobStorage."Value BLOB".CreateOutStream(OutStr);
 
-            // If the picture is of type Media, use this code:
-            // Rec.Picture.Image.ExportStream(OutStr);
+        // If the picture is of type Media, use this code:
+        // Rec.Picture.Image.ExportStream(OutStr);
 
-            // If the picture is of type MediaSet, use this code:
-            // if lRec_Item.FindSet() then begin
-            if lQue_Item.Picture.Count > 0 then begin
-                // If there are more than 1 pictures for this item. We take the first one.
-                MediaId := lQue_Item.Picture.Item(1);
+        // If the picture is of type MediaSet, use this code:
+        if lRec_Item.FindSet() then begin
+            // if lQue_Item.Picture.Count > 0 then begin
+            // If there are more than 1 pictures for this item. We take the first one.
+            MediaId := lRec_Item.Picture.Item(1);
 
-                TenantMedia.SetAutoCalcFields(Content);
-                if not TenantMedia.Get(MediaID) then
-                    exit;
+            TenantMedia.SetAutoCalcFields(Content);
+            if not TenantMedia.Get(MediaID) then
+                exit;
 
-                TenantMedia.Content.CreateInStream(InStr);
-                CopyStream(OutStr, InStr);
+            TenantMedia.Content.CreateInStream(InStr);
+            CopyStream(OutStr, InStr);
 
-                PictureWidth := TenantMedia.Width;
-                PictureHeight := TenantMedia.Height;
-            end;
-            gDescription := lQue_Item.Description;
-            TempPictureBlobStorage.Insert();
+            PictureWidth := TenantMedia.Width;
+            PictureHeight := TenantMedia.Height;
+        end;
+        gDescription := lRec_Item.Description;
+        TempPictureBlobStorage.Insert();
 
-            ItemCategoryName := '';
-            if lQue_Item.categoryCode <> '' then begin
-                if ItemCategory.Get(lQue_Item.categoryCode)
-                then
-                    ItemCategoryName := ItemCategory.Description
-            end;
-            // end;
+        ItemCategoryName := '';
+        if lRec_Item."Item Category Code" <> '' then begin
+            if ItemCategory.Get(lRec_Item."Item Category Code")
+            then
+                ItemCategoryName := ItemCategory.Description
         end;
     end;
-
 }
