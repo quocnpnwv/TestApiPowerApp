@@ -63,8 +63,6 @@ page 50102 CheckItemInventory
     }
     var
         TempPictureBlobStorage: Record "Name/Value Buffer" temporary; // The temporary record is used to load the picture
-        PictureHeight: Integer;
-        PictureWidth: Integer;
 
     trigger OnInit()
     var
@@ -72,8 +70,6 @@ page 50102 CheckItemInventory
         OutStr: OutStream;
         InStr: InStream;
         MediaId: Guid;
-        RecordR: RecordRef;
-        FieldR: FieldRef;
         ItemCategory: Record "Item Category";
         lQue_Item: Query ItemInventory;
         intID: Integer;
@@ -101,9 +97,6 @@ page 50102 CheckItemInventory
 
                 TenantMedia.Content.CreateInStream(InStr);
                 CopyStream(OutStr, InStr);
-
-                PictureWidth := TenantMedia.Width;
-                PictureHeight := TenantMedia.Height;
             end;
 
             TempPictureBlobStorage.Insert();

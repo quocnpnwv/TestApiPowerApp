@@ -10,6 +10,9 @@ page 50145 Location
     EntitySetName = 'location';
     PageType = API;
     SourceTable = Location;
+    InsertAllowed = false;
+    DeleteAllowed = false;
+    ModifyAllowed = false;
     
     layout
     {
