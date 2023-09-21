@@ -1,0 +1,56 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "sandbox test",
+            "request": "launch",
+            "type": "al",
+            "environmentType": "Sandbox",
+            "environmentName": "SandboxAU02",
+            "tenant": "f866d687-4458-4a42-b25f-daded8cea4b3",
+            "breakOnError": true,
+            "launchBrowser": true,
+            "enableLongRunningSqlStatements": true,
+            "enableSqlInformationDebugger": true,
+            "schemaUpdateMode": "ForceSync",
+            "startupObjectId": 22,
+            "startupObjectType": "Page",
+            //"longRunningSqlStatementsThreshold": 500,
+            //"breakOnNext": "WebServiceClient"
+        }
+          // {
+        //     "name": "WebService Sandbox_23_07_06",
+        //     "request":"attach",
+        //     "type": "al",
+        //     "environmentType": "OnPrem",
+        //     "server": "http://localhost",
+        //     "serverInstance": "BC220",
+        //     "authentication": "Windows",
+        //     "environmentName": "Sandbox_23_07_06",
+        //     // "tenant": "b9f8d1db-05fd-4248-a803-ef26e45b23e3",
+        //     "breakOnError": true,
+        //     "enableLongRunningSqlStatements": true,
+        //     "enableSqlInformationDebugger": true,
+        //     "longRunningSqlStatementsThreshold": 500,
+        //     "breakOnNext": "WebServiceClient"
+        // }
+    ]
+}
+// {
+//     "version": "0.2.0",
+//     "configurations": [
+//         {
+//             "name": "Microsoft cloud sandbox",
+//             "request": "launch",
+//             "type": "al",
+//             "environmentType": "Sandbox",
+//             "environmentName": "sandbox",
+//             "startupObjectId": 22,
+//             "startupObjectType": "Page",
+//             "breakOnError": "All",
+//             "launchBrowser": true,
+//             "enableLongRunningSqlStatements": true,
+//             "enableSqlInformationDebugger": true
+//         }
+//     ]
+// }
