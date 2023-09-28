@@ -43,4 +43,5 @@ tableextension 50122 Customer_Ext extends Customer
 
     var
         myInt: Integer;
+
 }
