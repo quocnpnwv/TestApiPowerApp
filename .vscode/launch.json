@@ -13,27 +13,29 @@
             "enableLongRunningSqlStatements": true,
             "enableSqlInformationDebugger": true,
             "schemaUpdateMode": "ForceSync",
-            "startupObjectId": 50102,
+            "startupObjectId": 50125,
             "startupObjectType": "Page",
-            "longRunningSqlStatementsThreshold": 500,
+            // "longRunningSqlStatementsThreshold": 500,
             //"breakOnNext": "WebServiceClient"
-        }
-        //   {
-        //     "name": "sandbox test2",
-        //     "request":"attach",
+        },
+        // {
+        //     "name": "Your own server",
+        //     "request": "launch",
         //     "type": "al",
-        //     "environmentType": "Sandbox",
-        //     "environmentName": "SandboxAU02",
-        //     // "server": "http://localhost",
-        //     // "serverInstance": "BC220",
-        //     // "authentication": "Windows",
-        //     // "environmentName": "Sandbox_23_07_06",
-        //     // "tenant": "f866d687-4458-4a42-b25f-daded8cea4b3",
-        //     "breakOnError": true,
+        //     "environmentType": "OnPrem",
+        //     "server": "http://192.168.1.230",
+        //     "port": 9049,
+        //     "serverInstance": "LSCentral",
+        //     "authentication": "Windows",
+        //     "startupObjectId": 22,
+        //     "startupObjectType": "Page",
+        //     "breakOnError": "All",
+        //     "launchBrowser": true,
         //     "enableLongRunningSqlStatements": true,
         //     "enableSqlInformationDebugger": true,
-        //     "longRunningSqlStatementsThreshold": 500,
-        //     "breakOnNext": "WebServiceClient"
+        //     "tenant": "default",
+        //     "usePublicURLFromServer": true,
+        //     "schemaUpdateMode": "ForceSync"
         // }
     ]
 }
