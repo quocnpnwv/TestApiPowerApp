@@ -119,6 +119,5 @@ page 50142 Item
             then
                 ItemCategoryName := ItemCategory.Description
         end;
-        Page.Run(Page::"Item Ledger Entry Api", Rec);
     end;
 }

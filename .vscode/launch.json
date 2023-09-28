@@ -13,26 +13,29 @@
             "enableLongRunningSqlStatements": true,
             "enableSqlInformationDebugger": true,
             "schemaUpdateMode": "ForceSync",
-            "startupObjectId": 22,
+            "startupObjectId": 50125,
             "startupObjectType": "Page",
-            //"longRunningSqlStatementsThreshold": 500,
+            // "longRunningSqlStatementsThreshold": 500,
             //"breakOnNext": "WebServiceClient"
-        }
-          // {
-        //     "name": "WebService Sandbox_23_07_06",
-        //     "request":"attach",
+        },
+        // {
+        //     "name": "Your own server",
+        //     "request": "launch",
         //     "type": "al",
         //     "environmentType": "OnPrem",
-        //     "server": "http://localhost",
-        //     "serverInstance": "BC220",
+        //     "server": "http://192.168.1.230",
+        //     "port": 9049,
+        //     "serverInstance": "LSCentral",
         //     "authentication": "Windows",
-        //     "environmentName": "Sandbox_23_07_06",
-        //     // "tenant": "b9f8d1db-05fd-4248-a803-ef26e45b23e3",
-        //     "breakOnError": true,
+        //     "startupObjectId": 22,
+        //     "startupObjectType": "Page",
+        //     "breakOnError": "All",
+        //     "launchBrowser": true,
         //     "enableLongRunningSqlStatements": true,
         //     "enableSqlInformationDebugger": true,
-        //     "longRunningSqlStatementsThreshold": 500,
-        //     "breakOnNext": "WebServiceClient"
+        //     "tenant": "default",
+        //     "usePublicURLFromServer": true,
+        //     "schemaUpdateMode": "ForceSync"
         // }
     ]
 }
