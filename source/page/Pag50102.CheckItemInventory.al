@@ -15,6 +15,7 @@ page 50102 CheckItemInventory
     DeleteAllowed = false;
     ModifyAllowed = false;
 
+
     layout
     {
         area(content)
