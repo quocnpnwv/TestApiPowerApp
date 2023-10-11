@@ -6,20 +6,20 @@ query 50100 ItemInventory
     EntityName = 'itemInventory';
     EntitySetName = 'itemInventory';
     QueryType = API;
-    
+
     elements
     {
         dataitem(Item_Ledger_Entry; "Item Ledger Entry")
         {
-            DataItemTableFilter = "Location Code" = filter(<> '');
-            
+            DataItemTableFilter = "Location Code" = filter(<> ''), "Remaining Quantity" = filter(> 0);
+
             column(Item_No; "Item No.")
             {
 
             }
             column(Location_Code; "Location Code")
             {
-                
+
             }
             column(Sum_Quantity; Quantity)
             {
@@ -28,7 +28,7 @@ query 50100 ItemInventory
             dataitem(itemsQuery; Item)
             {
                 DataItemLink = "No." = Item_Ledger_Entry."Item No.";
-                SqlJoinType = LeftOuterJoin;
+                SqlJoinType = InnerJoin;
                 column(Picture; Picture)
                 {
 

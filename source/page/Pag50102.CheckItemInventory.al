@@ -80,14 +80,14 @@ page 50102 CheckItemInventory
         // If the picture is of type Media, use this code:
         // Rec.Picture.Image.ExportStream(OutStr);
         while lQue_Item.Read() do begin
-            intID += 1;
+
             Clear(lRec_Item);
             //progress media
             lRec_Item.SetRange("No.", lQue_Item.Item_No);
-            TempPictureBlobStorage."Value BLOB".CreateOutStream(OutStr);
-            TempPictureBlobStorage.ID := intID;
-
-            if lRec_Item.FindSet() then begin
+            if lRec_Item.FindFirst() then begin
+                intID += 1;
+                TempPictureBlobStorage."Value BLOB".CreateOutStream(OutStr);
+                TempPictureBlobStorage.ID := intID;
                 // If there are more than 1 pictures for this item. We take the first one.
                 MediaId := lRec_Item.Picture.Item(1);
 
@@ -116,7 +116,8 @@ page 50102 CheckItemInventory
                     Rec.ItemCategoryName := ItemCategory.Description
             end;
             Rec.Insert(true);
-            
+
         end;
+        lQue_Item.Close();
     end;
 }
